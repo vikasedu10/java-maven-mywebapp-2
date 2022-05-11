@@ -1,6 +1,6 @@
 def buildApp() {
     echo "Building the application"
-    sh "/opt/maven/bin/mvn -B -DskipTests clean package"
+    sh "mvn -B -DskipTests clean package"
 }
 
 def buildImage() {
@@ -10,7 +10,7 @@ def buildImage() {
 
 def testApp() {
     echo "Testing app"
-    sh "/opt/maven/bin/mvn test"
+    sh "mvn test"
 }
 
 def deployImage() {

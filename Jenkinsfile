@@ -3,6 +3,10 @@ def gv
 pipeline {
     agent any
 
+    tools {
+        maven "maven-3.8"
+    }
+
     environment {
         IMAGE_NAME = "vikas1412/mywebapp:1.0"
         EC2_USERNAME = "ubuntu"
