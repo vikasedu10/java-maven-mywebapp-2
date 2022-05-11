@@ -5,7 +5,7 @@ def buildApp() {
 
 def buildImage() {
     echo "Build Image"
-    sh "docker build -t ${IMAGE_NAME}"
+    sh "docker build -t ${IMAGE_NAME} ."
 }
 
 def testApp() {
