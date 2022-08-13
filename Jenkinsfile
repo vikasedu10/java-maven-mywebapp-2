@@ -41,7 +41,7 @@ pipeline {
         stage("Deploy to docker-hub") {
             steps {
                 script {
-                    gv.deployImage()
+                    gv.deployImagetoDockerHub()
                 }
             }
         }
