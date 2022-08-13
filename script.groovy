@@ -13,13 +13,15 @@ def testApp() {
     sh "mvn test"
 }
 
-def deployImage() {
+def deployImagetoDockerHub() {
     echo "Deploying to docker-hub"
     withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
         sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
         sh "docker push ${IMAGE_NAME}"
     }
+}
 
+def deployImageToEC2() {
     echo "Doploying to ec2"
     def DOCKER_RUN_COMMAND = "docker run ${IMAGE_NAME}"
     
@@ -27,5 +29,6 @@ def deployImage() {
         sh "ssh -o StrictHostKeyChecking=no ${EC2_USERNAME}@${IP_ADDRESS} ${DOCKER_RUN_COMMAND}" 
     }
 }
+
 
 return this
